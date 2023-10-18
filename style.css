@@ -180,10 +180,43 @@ header {
   transition: 0.3s;
   cursor: pointer;
 }
+
 .card__img {
   height: 225px;
   border-top-right-radius: 36px;
   overflow: hidden;
+}
+.blur__load {
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  transition: 0.3s;
+  position: relative;
+}
+.blur__load::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  animation: pulse 2.5s infinite;
+}
+.blur__load.loaded::before {
+  content: none;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+.blur__load.loaded > img {
+  opacity: 1;
+}
+.blur__load > img {
+  opacity: 0;
+  transition: 200ms;
 }
 .card__img img {
   height: 100%;
